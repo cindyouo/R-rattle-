@@ -1,0 +1,13 @@
+TB <- read.csv('Transactions.csv')
+for (i in 1:n，ncol(TB)){
+  TB[,i] <- as.factor(TB[,i])
+}
+install.packages('arules')
+library('arules')
+myRules <- apriori(TB)
+myRules <- apriori(TB,parameter = list(supp=0.3,conf=0.6))
+myRules <- apriori(TB,parameter = list(supp=0.3,conf=0.6,minlen=2,maxlen=3))
+inspect(myRules[80:86])
+myRules <- apriori(TB,parameter = list(supp=0.3,conf=0.6,minlen=2,maxlen=3),
+                   appearance = list(default='lhs',rhs='Beer=1'))
+inspect(myRules)
